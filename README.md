@@ -1,4 +1,4 @@
-ass-leader-election
+aws-leader-election
 ==========
 
 Inflatable Raft - A Scala & Akka-Cluster based PnP leader election library for use in AWS, built on [Akka](http://akka.io/) & using the akka-cluster cluster singleton to perform leader elected tasks.
