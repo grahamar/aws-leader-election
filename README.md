@@ -18,14 +18,14 @@ Example Usage (Play Application)
 
 ### Global.scala
 
-    import com.teambytes.awsleader.Inflatable
+    import com.teambytes.awsleader.AwsLeaderElection
     
     object Global extends play.api.GlobalSettings {
     
       implicit val ec = play.api.libs.concurrent.Execution.defaultContext
     
       override def onStart(app: play.api.Application) = {
-        Inflatable.startLeaderElection(new TestLeaderElectionHandler(), app.configuration.underlying)
+        AwsLeaderElection.startLeaderElection(new TestLeaderElectionHandler(), app.configuration.underlying)
       }
     
     }
