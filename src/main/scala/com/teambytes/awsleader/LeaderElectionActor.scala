@@ -40,7 +40,7 @@ private[awsleader] class LeaderElectionActor(minMembers: Int, leaderProp: () => 
   private def stayOrGoToQuorum(newData: Data) =
     if (newData.numberOfMembers() >= minMembers){
       log.info("LeaderElectionActor: Quorum has been achieved. Current members: {}", newData.clusterMembers)
-      goto(Quorum) using newData.copy(target = Some(context.actorOf(leaderProp(), "worker")))
+      goto(Quorum) using newData.copy(target = Some(context.actorOf(leaderProp(), "leader")))
     } else {
       log.info("LeaderElectionActor: Quorum has not been reached. Current members: {}", newData.clusterMembers)
       stay using newData

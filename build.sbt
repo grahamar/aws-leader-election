@@ -27,6 +27,7 @@ lazy val root = (project in file(".")).
       "ch.qos.logback" % "logback-classic" % "1.1.2" % "test",
       "com.typesafe.akka" %% "akka-testkit" % "2.3.7" % "test",
       "com.typesafe.akka" %% "akka-multi-node-testkit" % "2.3.7" % "test",
+      "org.mockito"  %  "mockito-all" % "1.9.5" % "test",
       "org.scalatest" %% "scalatest" % "2.2.2" % "test"
     ),
     compile in MultiJvm <<= (compile in MultiJvm) triggeredBy (compile in Test),
