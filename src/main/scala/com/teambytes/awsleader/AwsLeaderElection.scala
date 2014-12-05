@@ -26,11 +26,13 @@ class AwsLeaderElection(handler: LeaderActionsHandler, akkaConfig: AkkaConfig)(i
 
   private val clusterSystem = ActorSystem("aws-leader-election-cluster", akkaConfig.config)
 
-  clusterSystem.actorOf(ClusterSingletonManager.props(
-    singletonProps = LeaderElectionActor.props(handler, akkaConfig.seeds.size),
-    singletonName = "consumer",
-    terminationMessage = PoisonPill,
-    role = Some("worker")),
+  clusterSystem.actorOf(
+    ClusterSingletonManager.props(
+      singletonProps = LeaderElectionActor.props(handler, akkaConfig.seeds.size),
+      singletonName = "aws-leader-elector",
+      terminationMessage = PoisonPill,
+      role = None
+    ),
     name = "singleton"
   )
 
