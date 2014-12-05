@@ -7,19 +7,19 @@ import org.slf4j.LoggerFactory
 
 import scala.concurrent.ExecutionContext
 
-object Inflatable {
+object AwsLeaderElection {
 
   def startLeaderElection(handler: LeaderActionsHandler)(implicit ec: ExecutionContext): Unit =
-    new Inflatable(handler, AkkaConfig.apply())(ec)
+    new AwsLeaderElection(handler, AkkaConfig.apply())(ec)
 
   def startLeaderElection(handler: LeaderActionsHandler, defaults: Config)(implicit ec: ExecutionContext): Unit =
-    new Inflatable(handler, AkkaConfig(defaults))(ec)
+    new AwsLeaderElection(handler, AkkaConfig(defaults))(ec)
 
 }
 
-class Inflatable(handler: LeaderActionsHandler, akkaConfig: AkkaConfig)(implicit ec: ExecutionContext) {
+class AwsLeaderElection(handler: LeaderActionsHandler, akkaConfig: AkkaConfig)(implicit ec: ExecutionContext) {
 
-  private val logger = LoggerFactory.getLogger(classOf[Inflatable])
+  private val logger = LoggerFactory.getLogger(classOf[AwsLeaderElection])
 
   logger.info("Loading leader election system...")
   logger.info(s"Seeds: ${akkaConfig.seeds}")
