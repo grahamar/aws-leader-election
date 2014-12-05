@@ -67,7 +67,7 @@ object LeaderElectionActor {
   private[awsleader] case object NoQuorum extends State
   private[awsleader] case object Quorum extends State
 
-  private[actors] case class Data(target: Option[ActorRef], clusterMembers: Set[Member]){
+  private[awsleader] case class Data(target: Option[ActorRef], clusterMembers: Set[Member]){
     def numberOfMembers() = clusterMembers.size
   }
 

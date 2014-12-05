@@ -24,7 +24,7 @@ class Inflatable(handler: LeaderActionsHandler, akkaConfig: AkkaConfig)(implicit
   logger.info("Loading leader election system...")
   logger.info(s"Seeds: ${akkaConfig.seeds}")
 
-  private val clusterSystem = ActorSystem("leader-election-system", akkaConfig.config)
+  private val clusterSystem = ActorSystem("aws-leader-election-cluster", akkaConfig.config)
 
   clusterSystem.actorOf(ClusterSingletonManager.props(
     singletonProps = LeaderElectionActor.props(handler, akkaConfig.seeds.size),
