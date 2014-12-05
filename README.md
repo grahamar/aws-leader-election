@@ -13,6 +13,10 @@ Settings read from `application.conf` at the root of the classpath, or as JVM ru
 - aws.leader.local - `true` to run locally and bypass AWS discovery.
 - aws.credentials - `access-key` & `secret-key` to pass to the AWS client for EC2 instance discovery
 
+Maven Central Dependency
+-------
+    "com.teambytes" %% "aws-leader-election" % "1.0.0"
+
 Example Usage (Play Application)
 -------
 
