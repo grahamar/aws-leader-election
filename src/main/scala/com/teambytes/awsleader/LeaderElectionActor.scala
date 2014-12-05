@@ -60,7 +60,7 @@ private[awsleader] class LeaderElectionActor(minMembers: Int, leaderProp: () => 
 
 object LeaderElectionActor {
   def props(handler: LeaderActionsHandler, minMembers: Int) =
-    Props(classOf[LeaderElectionActor], minMembers, LeaderActor.props(handler))
+    Props(classOf[LeaderElectionActor], minMembers, () => LeaderActor.props(handler))
 
   // states
   private[awsleader] sealed trait State

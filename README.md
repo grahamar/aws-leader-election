@@ -32,12 +32,12 @@ Example Usage (Play Application)
     
 ### TestLeaderElectionHandler.scala
 
-    import java.util.concurrent.{Executors, ScheduledExecutorService}
+    import java.util.concurrent.{Executors, SchedulingLeaderActionsHandler}
     
     import com.teambytes.awsleader.{PeriodicTask, SchedulingInflatableLeader}
     import play.core.NamedThreadFactory
     
-    class TestLeaderElectionHandler extends SchedulingInflatableLeader {
+    class TestLeaderElectionHandler extends SchedulingLeaderActionsHandler {
     
       val tasks = Set(new TestPeriodicJob())
     
