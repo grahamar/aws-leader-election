@@ -77,6 +77,16 @@ Example Usage (Play Application)
       }
     }
 
+Potential problems to be aware of
+-------
+This library uses the Akka cluster singleton pattern, which has several drawbacks, some of them are listed below:
+
+- the cluster singleton may quickly become a performance bottleneck,
+- you can not rely on the cluster singleton to be non-stop available - e.g. when node on which the singleton was running dies, it will take a few seconds for this to be noticed and the singleton be migrated to another node,
+- in the case of a network partition appearing in a Cluster that is using Automatic Downing (Automatic vs. Manual Downing), it may happen that the isolated clusters each decide to spin up their own singleton, meaning that there might be multiple singletons running in the system, yet the Clusters have no way of finding out about them (because of the network partition).
+
+Especially the last point is something you should be aware of - in general when using the Cluster Singleton pattern you should take care of downing nodes yourself and not rely on the timing based auto-down feature.
+
 Running Locally
 -------
 
